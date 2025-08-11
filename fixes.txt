@@ -1,2 +1,3 @@
 First bug fixed.
 second bug fixed.
+Third bug fixed.
