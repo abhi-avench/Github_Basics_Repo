@@ -2,10 +2,10 @@
 
 ## Screen 1-9 PDO
 
-### EVENT DRIVEN DATA
+## EVENT DRIVEN DATA
 
 | S.No | Subsystem ID | Icon No | Icons                    | Payload                | Description                                                                                                                     |
-| :--- | :----------- | :------ | :----------------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| ---- | ------------ | ------- | ------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | 1.   | R1           | 14      | Overload Winch R1        | `1C1#0000010000000000` | PDO: 0x1C1 (Winch R1 Status) Byte 3, Bit 16 (0x01 in Byte 3) Icon :- Activate when Byte3.Bit16=1, Deactivate when Byte3.Bit16=0 |
 | 2.   | R2           | 14      | Overload Winch R2        | `1C2#0000010000000000` | PDO: 0x1C2 (Winch R2 Status) Byte 3, Bit 16 (0x01 in Byte 3) Icon :- Activate when Byte3.Bit16=1, Deactivate when Byte3.Bit16=0 |
 | 3.   | SYS1         | 18      | System Error             | `181#1000000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 04 (0x10 in Byte 1) Icon :- Activate when Byte1.Bit04=1, Deactivate when Byte1.Bit04=0   |
@@ -20,39 +20,57 @@
 | 12.  | H1           | 187     | Manual Cooling On        | -                      | -                                                                                                                               |
 | 13.  | H1           | 186     | Manual Heating On        | -                      | -                                                                                                                               |
 
----
-
-### FUNCTION BUTTON SELECT SET
+## FUNCTION BUTTON SELECT SET
 
 - None.
 
----
-
-### JOYSTICK ASSIGNMENT
+## JOYSTICK ASSIGNMENT
 
 | S.No | Subsystem ID | Icon No | Joystick                   | Payload | Description                          |
-| :--- | :----------- | :------ | :------------------------- | :------ | :----------------------------------- |
+| ---- | ------------ | ------- | -------------------------- | ------- | ------------------------------------ |
 | 1.   | R1           | 25      | Main Winch Operation Right | -       | Static icon. Not coming through CAN. |
 | 2.   | R2           | 25      | Main Winch Operation Left  | -       | Static icon. Not coming through CAN. |
 | 3.   | E1           | 47      | Earth Anchor Retract       | -       | Static icon. Not coming through CAN. |
 | 4.   | E1           | 46      | Earth Anchor Extend        | -       | Static icon. Not coming through CAN. |
 
+## MAIN SCREEN INFORMATION
+
+| S.No | Subsystem ID | Widget No | Widget Name                               | Payload                | Description                                       |
+| ---- | ------------ | --------- | ----------------------------------------- | ---------------------- | ------------------------------------------------- |
+| 1.   | R2           | WD:59     | `_winch_type_no_gear_stat_std_L_00`       | `1C2#0000XX0000000000` | See Table 1: Gear Status for R2.                  |
+| 2.   | R1           | WD:60     | `_winch_type_no_gear_stat_std_R_00`       | `1C1#0000XX0000000000` | See Table 2: Gear Status for R1                   |
+| 3.   | R2           | WD:61     | `_3_45_load_unit_graphic_L_std_00`        | `1C2#0000000000XXXXXX` | See Tables 3 for load bar and force value for R2. |
+| 4.   | R1           | WD:62     | `_3_45_load_unit_graphic_R_std_00`        | `1C1#0000000000XXXXXX` | See Tables 4 for load bar and force value for R1  |
+| 5.   | R1           | WD:63     | `_3_45_rope_length_unit_graphic_R_std_00` | -                      |                                                   |
+| 6.   | R2           | WD:64     | `_3_45_rope_length_unit_graphic_L_std_00` | -                      |                                                   |
+
 ---
 
-### MAIN SCREEN INFORMATION
+# Table 1: Gear Status for R2
 
-| S.No | Subsystem ID | Widget No | Widget Name                               | Payload                | Description                                                                                                                                                                                                                                                                                             |
-| :--- | :----------- | :-------- | :---------------------------------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1.   | R2           | WD: 59    | `_winch_type_no_gear_stat_std_L_00`       | `1C2#0000XX0000000000` | **Byte 3 (Bits 18-19) Controls the Current Gear Status:**<br>- `XX=00`: Turtle (Icon 0002) → `1C2#0000000000000000`<br>- `XX=04`: Hare (Icon 0027) → `1C2#0000040000000000`<br>- `XX=08`: Turtle-Auto (Icon 0003) → `1C2#0000080000000000`<br>- `XX=0C`: Hare-Auto (Icon 0001) → `1C2#00000C0000000000` |
-| 2.   | R1           | WD: 60    | `_winch_type_no_gear_stat_std_R_00`       | `1C1#0000XX0000000000` | **Byte 3 (Bits 18-19) Controls the Current Gear Status:**<br>- `XX=00`: Turtle (Icon 0002) → `1C1#0000000000000000`<br>- `XX=04`: Hare (Icon 0027) → `1C1#0000040000000000`<br>- `XX=08`: Turtle-Auto (Icon 0003) → `1C1#0000080000000000`<br>- `XX=0C`: Hare-Auto (Icon 0001) → `1C1#00000C0000000000` |
-| 3.   | R1           | WD: 63    | `_3_45_rope_length_unit_graphic_R_std_00` | -                      | .                                                                                                                                                                                                                                                                                                       |
-| 4.   | R2           | WD: 64    | `_3_45_rope_length_unit_graphic_L_std_00` | -                      | .                                                                                                                                                                                                                                                                                                       |
+| Condition | Icon               | Example Payload        |
+| --------- | ------------------ | ---------------------- |
+| `XX=00`   | 0002 (Turtle)      | `1C2#0000000000000000` |
+| `XX=04`   | 0027 (Hare)        | `1C2#0000040000000000` |
+| `XX=08`   | 0003 (Turtle-Auto) | `1C2#0000080000000000` |
+| `XX=0C`   | 0001 (Hare-Auto)   | `1C2#00000C0000000000` |
 
 ---
+
+# Table 2: Gear Status for R1
+
+| Condition | Icon               | Example Payload        |
+| --------- | ------------------ | ---------------------- |
+| `XX=00`   | 0002 (Turtle)      | `1C1#0000000000000000` |
+| `XX=04`   | 0027 (Hare)        | `1C1#0000040000000000` |
+| `XX=08`   | 0003 (Turtle-Auto) | `1C1#0000080000000000` |
+| `XX=0C`   | 0001 (Hare-Auto)   | `1C1#00000C0000000000` |
+
+---
+
+# Tables 3: Load bar and force value for Winch R2.
 
 ### WD:61 - `_3_45_load_unit_graphic_L_std_00` (Winch R2)
-
-This widget uses payload `1C2#0000000000XXXXXX` to display load information for **Winch R2**.
 
 #### Force Calculation (kN, if Bit 60 → 1)
 
@@ -83,6 +101,7 @@ This widget uses payload `1C2#0000000000XXXXXX` to display load information for 
 | Payload                | Byte 6 | Calculation | Result              |
 | :--------------------- | :----- | :---------- | :------------------ |
 | `1C2#0000000000000000` | 0x00   | 0×0.5       | 0.0%                |
+| `1C1#0000000000640000` | 0x64   | 100\*0.5    | 50%                 |
 | `1C2#00000000007F0000` | 0x7F   | 127×0.5     | 63.5%               |
 | `1C2#0000000000FF0000` | 0xFF   | 255×0.5     | 127->100% (clamped) |
 | `1C2#0000000000C80000` | 0xC8   | 200×0.5     | 100% (clamped)      |
@@ -90,9 +109,9 @@ This widget uses payload `1C2#0000000000XXXXXX` to display load information for 
 
 ---
 
-### WD:62 - `_3_45_load_unit_graphic_R_std_00` (Winch R1)
+# Table 4: Load bar and force value for winch R1
 
-This widget uses payload `1C1#0000000000XXXXXX` to display load information for **Winch R1**.
+### WD:62 - `_3_45_load_unit_graphic_R_std_00` (Winch R1)
 
 #### Force Calculation (kN, if Bit 60 → 1)
 
@@ -123,19 +142,20 @@ This widget uses payload `1C1#0000000000XXXXXX` to display load information for 
 | Payload                | Byte 6 | Calculation | Result                |
 | :--------------------- | :----- | :---------- | :-------------------- |
 | `1C1#0000000000000000` | 0x00   | 0×0.5       | 0.0%                  |
+| `1C1#0000000000640000` | 0x64   | 100\*0.5    | 50%                   |
 | `1C1#00000000007F0000` | 0x7F   | 127×0.5     | 63.5%                 |
 | `1C1#0000000000FF0000` | 0xFF   | 255×0.5     | 127.5->100% (clamped) |
 | `1C1#0000000000C80000` | 0xC8   | 200×0.5     | 100% (clamped)        |
 | `1C1#0000000000C60000` | 0xC6   | 198×0.5     | 99.0%                 |
 
----
+|
 
 # HPU Information (REMOTE 5) - Documentation
 
-### EVENT DRIVEN ICONS
+## EVENT DRIVEN ICONS
 
 | S.No | Subsystem ID | Icon No | Icons                    | Payload                | Description                                                                                                                   |
-| :--- | :----------- | :------ | :----------------------- | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| ---- | ------------ | ------- | ------------------------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | 1.   | SYS1         | 18      | System Error             | `181#1000000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 04 (0x10 in Byte 1) Icon :- Activate when Byte1.Bit04=1, Deactivate when Byte1.Bit04=0 |
 | 2.   | SYS1         | 31      | E-Stop                   | `181#0800000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 03 (0x08 in Byte 1) Icon :- Activate when Byte1.Bit03=1, Deactivate when Byte1.Bit03=0 |
 | 3.   | SYS1         | 189     | Emergency Operation Mode | -                      | -                                                                                                                             |
@@ -143,27 +163,21 @@ This widget uses payload `1C1#0000000000XXXXXX` to display load information for 
 | 5.   | H1           | 187     | Manual Cooling On        | -                      | -                                                                                                                             |
 | 6.   | H1           | 186     | Manual Heating On        | -                      | -                                                                                                                             |
 
----
-
-### FUNCTION BUTTON SELECT SET
+## FUNCTION BUTTON SELECT SET
 
 | S.No | Subsystem ID | Icon No | Widgets/Icons | Payload | Description                 |
-| :--- | :----------- | :------ | :------------ | :------ | :-------------------------- |
+| ---- | ------------ | ------- | ------------- | ------- | --------------------------- |
 | 1.   | -            | 48      | Page Up       | -       | Static icon. UI controlled. |
 | 2.   | -            | 49      | Page Down     | -       | Static icon. UI controlled. |
 
----
-
-### JOYSTICK ASSIGNMENT
+## JOYSTICK ASSIGNMENT
 
 - None.
 
----
-
-### MAIN SCREEN INFORMATION
+## MAIN SCREEN INFORMATION
 
 | S.No | Subsystem ID | Widget No | Widgets               | Payload | Description |
-| :--- | :----------- | :-------- | :-------------------- | :------ | :---------- |
+| ---- | ------------ | --------- | --------------------- | ------- | ----------- |
 | 1.   | H1           | WD: 69    | Pressure Value        | -       | -           |
 | 2.   | H1           | WD: 70    | Flow Value            | -       | -           |
 | 3.   | H1           | WD: 71    | Oil Temperature Value | -       | -           |
@@ -171,35 +185,33 @@ This widget uses payload `1C1#0000000000XXXXXX` to display load information for 
 
 ---
 
+<br>
+<br>
+<br>
+
 # System Information (REMOTE 6) - Documentation
 
-### EVENT DRIVEN ICONS
+## EVENT DRIVEN ICONS
 
 | S.No | Subsystem ID | Icon No | Icons        | Payload                | Description                                                                                                                |
-| :--- | :----------- | :------ | :----------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| ---- | ------------ | ------- | ------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 1.   | SYS1         | 18      | System Error | `181#1000000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 04 (0x10 in Byte 1) Icon Activate when Byte1.Bit04=1, Deactivate when Byte1.Bit04=0 |
 | 2.   | SYS1         | 31      | E-Stop       | `181#0800000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 03 (0x04 in Byte 1) Icon Activate when Byte1.Bit03=1, Deactivate when Byte1.Bit03=0 |
 
----
-
-### FUNCTION BUTTON SELECT SET
+## FUNCTION BUTTON SELECT SET
 
 - None.
 
----
+## JOYSTICK ASSIGNMENT
 
-### JOYSTICK ASSIGNMENT
+| S.No | Subsystem ID | Icon No | Joysticks                                         | Payload | Description                  |
+| ---- | ------------ | ------- | ------------------------------------------------- | ------- | ---------------------------- |
+| 1.   | -            | 185     | Safe Function Button on FSM F2 - restart function | -       | Need to be changed in future |
 
-| S.No | Subsystem ID | Icon No | Joysticks                                         | Payload | Description                       |
-| :--- | :----------- | :------ | :------------------------------------------------ | :------ | :-------------------------------- |
-| 1.   | -            | 185     | Safe Function Button on FSM F2 - restart function | -       | Needs to be changed in the future |
-
----
-
-### MAIN SCREEN INFORMATION
+## MAIN SCREEN INFORMATION
 
 | S.No | Subsystem ID | Widget No | Widgets            | Payload | Description |
-| :--- | :----------- | :-------- | :----------------- | :------ | :---------- |
+| ---- | ------------ | --------- | ------------------ | ------- | ----------- |
 | 1.   | R1           | WD: 184   | System information | -       | -           |
 | 2.   | R2           | WD: 184   | System information | -       | -           |
 | 3.   | H1           | WD: 184   | System information | -       | -           |
