@@ -2,10 +2,10 @@
 
 ## Screen 1-9 PDO
 
-## EVENT DRIVEN DATA
+### EVENT DRIVEN DATA
 
 | S.No | Subsystem ID | Icon No | Icons                    | Payload                | Description                                                                                                                     |
-| ---- | ------------ | ------- | ------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| :--- | :----------- | :------ | :----------------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | 1.   | R1           | 14      | Overload Winch R1        | `1C1#0000010000000000` | PDO: 0x1C1 (Winch R1 Status) Byte 3, Bit 16 (0x01 in Byte 3) Icon :- Activate when Byte3.Bit16=1, Deactivate when Byte3.Bit16=0 |
 | 2.   | R2           | 14      | Overload Winch R2        | `1C2#0000010000000000` | PDO: 0x1C2 (Winch R2 Status) Byte 3, Bit 16 (0x01 in Byte 3) Icon :- Activate when Byte3.Bit16=1, Deactivate when Byte3.Bit16=0 |
 | 3.   | SYS1         | 18      | System Error             | `181#1000000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 04 (0x10 in Byte 1) Icon :- Activate when Byte1.Bit04=1, Deactivate when Byte1.Bit04=0   |
@@ -20,36 +20,122 @@
 | 12.  | H1           | 187     | Manual Cooling On        | -                      | -                                                                                                                               |
 | 13.  | H1           | 186     | Manual Heating On        | -                      | -                                                                                                                               |
 
-## FUNCTION BUTTON SELECT SET
+---
+
+### FUNCTION BUTTON SELECT SET
 
 - None.
 
-## JOYSTICK ASSIGNMENT
+---
+
+### JOYSTICK ASSIGNMENT
 
 | S.No | Subsystem ID | Icon No | Joystick                   | Payload | Description                          |
-| ---- | ------------ | ------- | -------------------------- | ------- | ------------------------------------ |
+| :--- | :----------- | :------ | :------------------------- | :------ | :----------------------------------- |
 | 1.   | R1           | 25      | Main Winch Operation Right | -       | Static icon. Not coming through CAN. |
 | 2.   | R2           | 25      | Main Winch Operation Left  | -       | Static icon. Not coming through CAN. |
 | 3.   | E1           | 47      | Earth Anchor Retract       | -       | Static icon. Not coming through CAN. |
 | 4.   | E1           | 46      | Earth Anchor Extend        | -       | Static icon. Not coming through CAN. |
 
-## MAIN SCREEN INFORMATION
+---
 
-| S.No | Subsystem ID | Widget No | Widget Name                               | Payload                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ---- | ------------ | --------- | ----------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
-| 1.   | R2           | WD: 59    | `_winch_type_no_gear_stat_std_L_00`       | `1C2#0000XX0000000000`   | **Byte 3 (Bits 18-19) Controls the Current Gear Status When**:<br>- `XX=00`: Turtle (RICN**0002_1_GEAR_STD_01) → **appears Icon 0002**<br>PAYLOADS->`1C2#0000000000000000`<br>- `XX=04`: Hare (RICN**0027_2_GEAR_STD_01) → **appears Icon 0027**<br>PAYLOADS ->`1C2#0000040000000000`<br>- `XX=08`: Turtle-Auto (RICN**0003_1_GEAR_AUTO_STD_01) → **appears Icon 0003**<br>PAYLOADS->`1C2#0000080000000000`<br>- `XX=0C`: Hare-Auto (RICN**0001_2_GEAR_AUTO_STD_01) → **appears Icon 0001**<br>PAYLOADS ->`1C2#00000C0000000000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| 2.   | R1           | WD: 60    | `_winch_type_no_gear_stat_std_R_00`       | `1C1#0000XX0000000000`   | **Byte 3 (Bits 18-19) Controls the Current Gear Status When**:<br>- `XX=00`: Turtle (RICN**0002_1_GEAR_STD_01) → **appears Icon 0002**<br>PAYLOADS->`1C1#0000000000000000`<br>- `XX=04`: Hare (RICN**0027_2_GEAR_STD_01) → **appears Icon 0027**<br>PAYLOADS ->`1C1#0000040000000000`<br>- `XX=08`: Turtle-Auto (RICN**0003_1_GEAR_AUTO_STD_01) → **appears Icon 0003**<br>PAYLOADS->`1C1#0000080000000000`<br>- `XX=0C`: Hare-Auto (RICN**0001_2_GEAR_AUTO_STD_01) → **appears Icon 0001**<br>PAYLOADS ->`1C1#00000C0000000000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| 3.   | R2           | WD: 61    | `_3_45_load_unit_graphic_L_std_00`        | `1C2#000000000000XXXXXX` | **Force Calculation Table when Bit 60 → 1:**<table><thead><tr><th>CAN payload</th><th>Actual_force_percentage</th><th>Max_force</th><th>Calculated value (manual)</th><th>Expected Result to be Displayed on UI (in kN)</th></tr></thead><tbody><tr><td>`1C2#0000000000FFFF13`</td><td>0xff = 127.5</td><td>0x3ff = 1023</td><td>(127.5/100) _ 1023 = 1304.325</td><td>1304</td></tr><tr><td>`1C2#0000000000FF0110`</td><td>0xff = 127.5</td><td>0x001 = 1</td><td>(127.5/100) _ 1 = 1.275</td><td>1</td></tr><tr><td>`1C2#000000000001FF13`</td><td>0x01 = 0.5</td><td>0x3ff = 1023</td><td>(0.5/100) _ 1023 = 5.115</td><td>5</td></tr><tr><td>`1C2#0000000000FEFE13`</td><td>0xfe = 127</td><td>0x3fe = 1022</td><td>(127/100) _ 1022 = 1297.94</td><td>1297</td></tr><tr><td>`1C2#0000000000FF0011`</td><td>0xff = 127.5</td><td>0x100 = 256</td><td>(127.5/100) \* 256 = 326.4</td><td>326</td></tr></tbody></table>**Force Calculation Table when Bit 60 → 0 (Tonne):**<table><thead><tr><th>CAN payload</th><th>Actual_force_percentage</th><th>Max_force</th><th>Calculated value in tonne</th><th>Expected Result to be Displayed on UI (in Tonne)</th></tr></thead><tbody><tr><td>`1C2#0000000000FFFF03`</td><td>0xff = 127.5</td><td>0x3ff = 1023</td><td>1304.325 × 0.1019716 = 132.97</td><td>132.9</td></tr><tr><td>`1C2#0000000000FF0100`</td><td>0xff = 127.5</td><td>0x001 = 1</td><td>1.275 × 0.1019716 = 0.13</td><td>0.13</td></tr><tr><td>`1C2#000000000001FF03`</td><td>0x01 = 0.5</td><td>0x3ff = 1023</td><td>5.115 × 0.1019716 = 0.521</td><td>0.52</td></tr><tr><td>`1C2#0000000000FEFE03`</td><td>0xfe = 127</td><td>0x3fe = 1022</td><td>1297.94 × 0.1019716 = 132.29</td><td>132.3</td></tr><tr><td>`1C2#0000000000FF0001`</td><td>0xff = 127.5</td><td>0x100 = 256</td><td>326.4 × 0.1019716 = 33.26</td><td>33.26</td></tr></tbody></table>**LOAD_BAR %:**<br><table><thead><tr><th>PAYLOADS</th><th>6th BYTE</th><th>Calculation</th><th>LOAD_BAR%</th></tr></thead><tbody><tr><td>`1C2#0000000000000000`</td><td>0x00</td><td>0 × 0.5 = 0.0</td><td>0.0%</td></tr><tr><td>`1C2#00000000007F0000`</td><td>0x7F</td><td>127 × 0.5 = 63.5</td><td>63.5%</td></tr><tr><td>`1C2#0000000000FF0000`</td><td>0xFF</td><td>255 × 0.5 = 127.5 → clamped</td><td>100.0%</td></tr></tbody></table>**Edge Case:**<table><thead><tr><th>PAYLOADS</th><th>6th BYTE</th><th>Calculation</th><th>LOAD_BAR%</th></tr></thead><tbody><tr><td>`1C2#0000000000C80000`</td><td>0xC8</td><td>200 × 0.5 = 100.0 → clamped</td><td>100.0%</td></tr><tr><td>`1C2#0000000000C60000`</td><td>0xC6</td><td>198 × 0.5 = 99.0 </td><td>99.0%</td></tr></tbody></table> |
-| 4.   | R1           | WD: 62    | `_3_45_load_unit_graphic_R_std_00`        | `1C1#0000000000XXXXXX`   | **Force Calculation Table when Bit 60 → 1:**<table><thead><tr><th>CAN payload</th><th>Actual_force_percentage</th><th>Max_force</th><th>Calculated value (manual)</th><th>Expected Result to be Displayed on UI (in kN)</th></tr></thead><tbody><tr><td>`1C1#0000000000FFFF13`</td><td>0xff = 127.5</td><td>0x3ff = 1023</td><td>(127.5/100) _ 1023 = 1304.325</td><td>1304</td></tr><tr><td>`1C1#0000000000FF0110`</td><td>0xff = 127.5</td><td>0x001 = 1</td><td>(127.5/100) _ 1 = 1.275</td><td>1</td></tr><tr><td>`1C1#000000000001FF13`</td><td>0x01 = 0.5</td><td>0x3ff = 1023</td><td>(0.5/100) _ 1023 = 5.115</td><td>5</td></tr><tr><td>`1C1#0000000000FEFE13`</td><td>0xfe = 127</td><td>0x3fe = 1022</td><td>(127/100) _ 1022 = 1297.94</td><td>1297</td></tr><tr><td>`1C1#0000000000FF0011`</td><td>0xff = 127.5</td><td>0x100 = 256</td><td>(127.5/100) \* 256 = 326.4</td><td>326</td></tr></tbody></table>**Force Calculation Table when Bit 60 → 0 (Tonne):**<table><thead><tr><th>CAN payload</th><th>Actual_force_percentage</th><th>Max_force</th><th>Calculated value in tonne</th><th>Expected Result to be Displayed on UI (in Tonne)</th></tr></thead><tbody><tr><td>`1C1#0000000000FFFF03`</td><td>0xff = 127.5</td><td>0x3ff = 1023</td><td>1304.325 × 0.1019716 = 132.97</td><td>132.9</td></tr><tr><td>`1C1#0000000000FF0100`</td><td>0xff = 127.5</td><td>0x001 = 1</td><td>1.275 × 0.1019716 = 0.13</td><td>0.13</td></tr><tr><td>`1C1#0000000000FFFF03`</td><td>0x01 = 0.5</td><td>0x3ff = 1023</td><td>5.115 × 0.1019716 = 0.521</td><td>0.52</td></tr><tr><td>`1C1#0000000000FEFE03`</td><td>0xfe = 127</td><td>0x3fe = 1022</td><td>1297.94 × 0.1019716 = 132.29</td><td>132.3</td></tr><tr><td>`1C1#0000000000FF0001`</td><td>0xff = 127.5</td><td>0x100 = 256</td><td>326.4 × 0.1019716 = 33.26</td><td>33.26</td></tr></tbody></table>**LOAD_BAR %:**<br><table><thead><tr><th>PAYLOADS</th><th>6th BYTE</th><th>Calculation</th><th>LOAD_BAR%</th></tr></thead><tbody><tr><td>`1C1#0000000000000000`</td><td>0x00</td><td>0 × 0.5 = 0.0</td><td>0.0%</td></tr><tr><td>`1C1#00000000007F0000`</td><td>0x7F</td><td>127 × 0.5 = 63.5</td><td>63.5%</td></tr><tr><td>`1C1#0000000000FF0000`</td><td>0xFF</td><td>255 × 0.5 = 127.5 → clamped</td><td>100.0%</td></tr></tbody></table>**Edge Case:**<table><thead><tr><th>PAYLOADS</th><th>6th BYTE</th><th>Calculation</th><th>LOAD_BAR%</th></tr></thead><tbody><tr><td>`1C1#0000000000C80000`</td><td>0xC8</td><td>200 × 0.5 = 100.0 → clamped</td><td>100.0%</td></tr><tr><td>`1C1#0000000000C60000`</td><td>0xC6</td><td>198 × 0.5 = 99.0 </td><td>99.0%</td></tr></tbody></table> |     |
-| 5.   | R1           | WD: 63    | `_3_45_rope_length_unit_graphic_R_std_00` |                          | Right rope length display                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| 6.   | R2           | WD: 64    | `_3_45_rope_length_unit_graphic_L_std_00` |                          | Left rope length display                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+### MAIN SCREEN INFORMATION
+
+| S.No | Subsystem ID | Widget No | Widget Name                               | Payload                | Description                                                                                                                                                                                                                                                                                             |
+| :--- | :----------- | :-------- | :---------------------------------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1.   | R2           | WD: 59    | `_winch_type_no_gear_stat_std_L_00`       | `1C2#0000XX0000000000` | **Byte 3 (Bits 18-19) Controls the Current Gear Status:**<br>- `XX=00`: Turtle (Icon 0002) → `1C2#0000000000000000`<br>- `XX=04`: Hare (Icon 0027) → `1C2#0000040000000000`<br>- `XX=08`: Turtle-Auto (Icon 0003) → `1C2#0000080000000000`<br>- `XX=0C`: Hare-Auto (Icon 0001) → `1C2#00000C0000000000` |
+| 2.   | R1           | WD: 60    | `_winch_type_no_gear_stat_std_R_00`       | `1C1#0000XX0000000000` | **Byte 3 (Bits 18-19) Controls the Current Gear Status:**<br>- `XX=00`: Turtle (Icon 0002) → `1C1#0000000000000000`<br>- `XX=04`: Hare (Icon 0027) → `1C1#0000040000000000`<br>- `XX=08`: Turtle-Auto (Icon 0003) → `1C1#0000080000000000`<br>- `XX=0C`: Hare-Auto (Icon 0001) → `1C1#00000C0000000000` |
+| 3.   | R1           | WD: 63    | `_3_45_rope_length_unit_graphic_R_std_00` | -                      | .                                                                                                                                                                                                                                                                                                       |
+| 4.   | R2           | WD: 64    | `_3_45_rope_length_unit_graphic_L_std_00` | -                      | .                                                                                                                                                                                                                                                                                                       |
+
+---
+
+### WD:61 - `_3_45_load_unit_graphic_L_std_00` (Winch R2)
+
+This widget uses payload `1C2#0000000000XXXXXX` to display load information for **Winch R2**.
+
+#### Force Calculation (kN, if Bit 60 → 1)
+
+| CAN payload            | Actual % | Max Force | Calculation       | Result (kN) |
+| :--------------------- | :------- | :-------- | :---------------- | :---------- |
+| `1C2#0000000000FFFF13` | 127.5    | 1023      | (127.5/100)\*1023 | 1304        |
+| `1C2#0000000000FF0110` | 127.5    | 1         | (127.5/100)\*1    | 1           |
+| `1C2#000000000001FF13` | 0.5      | 1023      | (0.5/100)\*1023   | 5           |
+| `1C2#0000000000FEFE13` | 127      | 1022      | (127/100)\*1022   | 1297        |
+| `1C2#0000000000FF0011` | 127.5    | 256       | (127.5/100)\*256  | 326         |
+
+---
+
+#### Force Calculation (Tonne, if Bit 60 → 0)
+
+| CAN payload            | Actual % | Max Force | Calculation        | Result (Tonne) |
+| :--------------------- | :------- | :-------- | :----------------- | :------------- |
+| `1C2#0000000000FFFF03` | 127.5    | 1023      | 1304.325×0.1019716 | 132.9          |
+| `1C2#0000000000FF0100` | 127.5    | 1         | 1.275×0.1019716    | 0.13           |
+| `1C2#000000000001FF03` | 0.5      | 1023      | 5.115×0.1019716    | 0.52           |
+| `1C2#0000000000FEFE03` | 127      | 1022      | 1297.94×0.1019716  | 132.3          |
+| `1C2#0000000000FF0001` | 127.5    | 256       | 326.4×0.1019716    | 33.26          |
+
+---
+
+#### Load Bar Percentage which is manipulated by BYTE 6.
+
+| Payload                | Byte 6 | Calculation | Result              |
+| :--------------------- | :----- | :---------- | :------------------ |
+| `1C2#0000000000000000` | 0x00   | 0×0.5       | 0.0%                |
+| `1C2#00000000007F0000` | 0x7F   | 127×0.5     | 63.5%               |
+| `1C2#0000000000FF0000` | 0xFF   | 255×0.5     | 127->100% (clamped) |
+| `1C2#0000000000C80000` | 0xC8   | 200×0.5     | 100% (clamped)      |
+| `1C2#0000000000C60000` | 0xC6   | 198×0.5     | 99.0%               |
+
+---
+
+### WD:62 - `_3_45_load_unit_graphic_R_std_00` (Winch R1)
+
+This widget uses payload `1C1#0000000000XXXXXX` to display load information for **Winch R1**.
+
+#### Force Calculation (kN, if Bit 60 → 1)
+
+| CAN payload            | Actual % | Max Force | Calculation       | Result (kN) |
+| :--------------------- | :------- | :-------- | :---------------- | :---------- |
+| `1C1#0000000000FFFF13` | 127.5    | 1023      | (127.5/100)\*1023 | 1304        |
+| `1C1#0000000000FF0110` | 127.5    | 1         | (127.5/100)\*1    | 1           |
+| `1C1#000000000001FF13` | 0.5      | 1023      | (0.5/100)\*1023   | 5           |
+| `1C1#0000000000FEFE13` | 127      | 1022      | (127/100)\*1022   | 1297        |
+| `1C1#0000000000FF0011` | 127.5    | 256       | (127.5/100)\*256  | 326         |
+
+---
+
+#### Force Calculation (Tonne, if Bit 60 → 0)
+
+| CAN payload            | Actual % | Max Force | Calculation        | Result (Tonne) |
+| :--------------------- | :------- | :-------- | :----------------- | :------------- |
+| `1C1#0000000000FFFF03` | 127.5    | 1023      | 1304.325×0.1019716 | 132.9          |
+| `1C1#0000000000FF0100` | 127.5    | 1         | 1.275×0.1019716    | 0.13           |
+| `1C1#0000000000FFFF03` | 0.5      | 1023      | 5.115×0.1019716    | 0.52           |
+| `1C1#0000000000FEFE03` | 127      | 1022      | 1297.94×0.1019716  | 132.3          |
+| `1C1#0000000000FF0001` | 127.5    | 256       | 326.4×0.1019716    | 33.26          |
+
+---
+
+#### Load Bar Percentage which is manipulated by BYTE 6
+
+| Payload                | Byte 6 | Calculation | Result                |
+| :--------------------- | :----- | :---------- | :-------------------- |
+| `1C1#0000000000000000` | 0x00   | 0×0.5       | 0.0%                  |
+| `1C1#00000000007F0000` | 0x7F   | 127×0.5     | 63.5%                 |
+| `1C1#0000000000FF0000` | 0xFF   | 255×0.5     | 127.5->100% (clamped) |
+| `1C1#0000000000C80000` | 0xC8   | 200×0.5     | 100% (clamped)        |
+| `1C1#0000000000C60000` | 0xC6   | 198×0.5     | 99.0%                 |
+
+---
 
 # HPU Information (REMOTE 5) - Documentation
 
-## EVENT DRIVEN ICONS
+### EVENT DRIVEN ICONS
 
 | S.No | Subsystem ID | Icon No | Icons                    | Payload                | Description                                                                                                                   |
-| ---- | ------------ | ------- | ------------------------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| :--- | :----------- | :------ | :----------------------- | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | 1.   | SYS1         | 18      | System Error             | `181#1000000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 04 (0x10 in Byte 1) Icon :- Activate when Byte1.Bit04=1, Deactivate when Byte1.Bit04=0 |
 | 2.   | SYS1         | 31      | E-Stop                   | `181#0800000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 03 (0x08 in Byte 1) Icon :- Activate when Byte1.Bit03=1, Deactivate when Byte1.Bit03=0 |
 | 3.   | SYS1         | 189     | Emergency Operation Mode | -                      | -                                                                                                                             |
@@ -57,21 +143,27 @@
 | 5.   | H1           | 187     | Manual Cooling On        | -                      | -                                                                                                                             |
 | 6.   | H1           | 186     | Manual Heating On        | -                      | -                                                                                                                             |
 
-## FUNCTION BUTTON SELECT SET
+---
+
+### FUNCTION BUTTON SELECT SET
 
 | S.No | Subsystem ID | Icon No | Widgets/Icons | Payload | Description                 |
-| ---- | ------------ | ------- | ------------- | ------- | --------------------------- |
+| :--- | :----------- | :------ | :------------ | :------ | :-------------------------- |
 | 1.   | -            | 48      | Page Up       | -       | Static icon. UI controlled. |
 | 2.   | -            | 49      | Page Down     | -       | Static icon. UI controlled. |
 
-## JOYSTICK ASSIGNMENT
+---
+
+### JOYSTICK ASSIGNMENT
 
 - None.
 
-## MAIN SCREEN INFORMATION
+---
+
+### MAIN SCREEN INFORMATION
 
 | S.No | Subsystem ID | Widget No | Widgets               | Payload | Description |
-| ---- | ------------ | --------- | --------------------- | ------- | ----------- |
+| :--- | :----------- | :-------- | :-------------------- | :------ | :---------- |
 | 1.   | H1           | WD: 69    | Pressure Value        | -       | -           |
 | 2.   | H1           | WD: 70    | Flow Value            | -       | -           |
 | 3.   | H1           | WD: 71    | Oil Temperature Value | -       | -           |
@@ -79,33 +171,35 @@
 
 ---
 
-<br>
-<br>
-<br>
-
 # System Information (REMOTE 6) - Documentation
 
-## EVENT DRIVEN ICONS
+### EVENT DRIVEN ICONS
 
 | S.No | Subsystem ID | Icon No | Icons        | Payload                | Description                                                                                                                |
-| ---- | ------------ | ------- | ------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| :--- | :----------- | :------ | :----------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------- |
 | 1.   | SYS1         | 18      | System Error | `181#1000000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 04 (0x10 in Byte 1) Icon Activate when Byte1.Bit04=1, Deactivate when Byte1.Bit04=0 |
 | 2.   | SYS1         | 31      | E-Stop       | `181#0800000000000000` | PDO: 0x181 (System Status) Byte 1, Bit 03 (0x04 in Byte 1) Icon Activate when Byte1.Bit03=1, Deactivate when Byte1.Bit03=0 |
 
-## FUNCTION BUTTON SELECT SET
+---
+
+### FUNCTION BUTTON SELECT SET
 
 - None.
 
-## JOYSTICK ASSIGNMENT
+---
 
-| S.No | Subsystem ID | Icon No | Joysticks                                         | Payload | Description                  |
-| ---- | ------------ | ------- | ------------------------------------------------- | ------- | ---------------------------- |
-| 1.   | -            | 185     | Safe Function Button on FSM F2 - restart function | -       | Need to be changed in future |
+### JOYSTICK ASSIGNMENT
 
-## MAIN SCREEN INFORMATION
+| S.No | Subsystem ID | Icon No | Joysticks                                         | Payload | Description                       |
+| :--- | :----------- | :------ | :------------------------------------------------ | :------ | :-------------------------------- |
+| 1.   | -            | 185     | Safe Function Button on FSM F2 - restart function | -       | Needs to be changed in the future |
+
+---
+
+### MAIN SCREEN INFORMATION
 
 | S.No | Subsystem ID | Widget No | Widgets            | Payload | Description |
-| ---- | ------------ | --------- | ------------------ | ------- | ----------- |
+| :--- | :----------- | :-------- | :----------------- | :------ | :---------- |
 | 1.   | R1           | WD: 184   | System information | -       | -           |
 | 2.   | R2           | WD: 184   | System information | -       | -           |
 | 3.   | H1           | WD: 184   | System information | -       | -           |
