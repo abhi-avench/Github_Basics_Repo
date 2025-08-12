@@ -8,11 +8,15 @@
 
 ### `$` git config --list
 
+---
+
 # Git: Starting a Repo
 
 ### `$` git init
 
 ### `$` git status
+
+---
 
 # Git: Staging files
 
@@ -30,6 +34,8 @@
 
 ### `$` git reset `<file-name>`
 
+---
+
 # Git: Commiting to a Repository
 
 ### `$` git commit -m `<Add-some-messages>`
@@ -37,6 +43,8 @@
 ### `$` git reset --soft HEAD
 
 ### `$` git commit --amend -m `<Enter-your-message>`
+
+---
 
 # Git: pulling and pushing from and to repositories
 
