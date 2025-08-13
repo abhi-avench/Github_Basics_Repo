@@ -35,14 +35,14 @@
 
 ## MAIN SCREEN INFORMATION
 
-| S.No | Subsystem ID | Widget No | Widget Name                               | Payload                | Description                                                    |
-| ---- | ------------ | --------- | ----------------------------------------- | ---------------------- | -------------------------------------------------------------- |
-| 1.   | R2           | WD:59     | `_winch_type_no_gear_stat_std_L_00`       | `1C2#0000XX0000000000` | See Table 1: Gear Status for R2.                               |
-| 2.   | R1           | WD:60     | `_winch_type_no_gear_stat_std_R_00`       | `1C1#0000XX0000000000` | See Table 2: Gear Status for R1                                |
-| 3.   | R2           | WD:61     | `_3_45_load_unit_graphic_L_std_00`        | `1C2#0000000000XXXXXX` | See Table 3: for load bar% and force value for R2.             |
-| 4.   | R1           | WD:62     | `_3_45_load_unit_graphic_R_std_00`        | `1C1#0000000000XXXXXX` | See Table 4: for load bar% and force value for R1              |
-| 5.   | R1           | WD:63     | `_3_45_rope_length_unit_graphic_R_std_00` | `1C1#0000XXXXXX000000` | See Table 5: for load bar% and Rope Minimum length value of R1 |
-| 6.   | R2           | WD:64     | `_3_45_rope_length_unit_graphic_L_std_00` | `1C2#0000XXXXXX000000` | See Table 6: for load bar% and Rope Minimum length value of R2 |
+| S.No | Subsystem ID | Widget No | Widget Name                              | Payload                | Description                                                    |
+| ---- | ------------ | --------- | ---------------------------------------- | ---------------------- | -------------------------------------------------------------- |
+| 1.   | R2           | WD:59     | \_winch_type_no_gear_stat_std_L_00       | `1C2#0000XX0000000000` | See Table 1: Gear Status for R2.                               |
+| 2.   | R1           | WD:60     | \_winch_type_no_gear_stat_std_R_00       | `1C1#0000XX0000000000` | See Table 2: Gear Status for R1                                |
+| 3.   | R2           | WD:61     | \_3_45_load_unit_graphic_L_std_00        | `1C2#0000000000XXXXXX` | See Table 3: for load bar% and force value for R2.             |
+| 4.   | R1           | WD:62     | \_3_45_load_unit_graphic_R_std_00        | `1C1#0000000000XXXXXX` | See Table 4: for load bar% and force value for R1              |
+| 5.   | R1           | WD:63     | \_3_45_rope_length_unit_graphic_R_std_00 | `1C1#0000XXXXXX000000` | See Table 5: for load bar% and Rope Minimum length value of R1 |
+| 6.   | R2           | WD:64     | \_3_45_rope_length_unit_graphic_L_std_00 | `1C2#0000XXXXXX000000` | See Table 6: for load bar% and Rope Minimum length value of R2 |
 
 ---
 
